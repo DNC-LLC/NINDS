@@ -9,9 +9,6 @@ library(rms)
 
 # Read SAS data labels extracted by Stat/Transfer VAR command
 labs <- read.delim("NINDSCCTR/tclemons/tPA/nindsvars.dat", header=FALSE, stringsAsFactors=FALSE)
-names(labs) <- c("var", "label")
-labels = labs$label
-names(labels) <- tolower(labs$var)
 ninds <- upData(ninds,
                 bdiab = bdiab==100,
                 bhyper = bhyper==100,
@@ -23,8 +20,7 @@ ninds <- upData(ninds,
                 ntiahx = ntiahx==100,
                 patrial = patrial==100,
                 cursmker = cursmker==100,
-                nopdis = nopdis==100,
-                labels = labels)
+                nopdis = nopdis==100)
 
 ninds <- upData(ninds
                 ,treatcd = ordered(treatcd, levels=2:1, labels=c('Placebo','t-PA'))
@@ -119,18 +115,20 @@ ninds <- upData(ninds
 # Neuro exam detail (starts with sconscio_base)
 # ...
 
-# Drop stupid or redundant variables
+# Drop stupid or redundant variables, and label the rest
+names(labs) <- c("var", "label")
+labels = labs$label
+names(labels) <- tolower(labs$var)
 ninds <- upData(ninds,
                 drop = c('stratum','nihgrp','nihgrp20',
                          'd24hrs','d2hrs','d7ds','d90ds',
                          'bpdrop','admbp','admdia','dia',
                          'rankin1','dfi24','reocc24','other24',
-                         'det24','det710','asymp36'))
+                         'det24','det710','asymp36'),
+                labels = labels)
+
 
 # Add units where helpful, removing them from labels when present
 
-# Describe the data
-# Variables coded 0->NO; 100->YES
-
-# Plot lesion volumes over time vs treatment allocation
-
+# Write to disk
+save(ninds, file="ninds.Rdata")
