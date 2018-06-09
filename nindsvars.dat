@@ -1,0 +1,320 @@
+CHEART	Baseline Pulse Rate
+BDIAB	History of Diabetes at Baseline
+BHYPER	History of Hypertension at Baseline
+BMI	History of Myocardial Infarction at Baseline
+BANGINA	History of Angina at Baseline
+BCONG	History of Congestive Heart Failure at Baseline
+BVAL	History of Valvular Heart Disease at Baseline
+ASPIRIN	Aspirin Use prior to Randomization
+NRANKIN	Prestroke Rankin
+NSTHX	Patient Reported Prior Stroke at Baseline
+NTIAHX	Patient Reported Prior TIA at Baseline
+PATRIAL	Atrial Fibrillation at Admission
+TREATCD	Treatment Code
+CURSMKER	Smoking in Year prior to This Stroke
+NOPDIS	No Preexisting Disability at Baseline
+CSYS	Baseline Systolic BP
+CDIA	Baseline Diastolic BP
+BGENDER	Patient's Gender
+BRACE	Patient's Race
+TWEIGHT	Estimated Weight (kg) at Randomization
+TDX	Presumptive Diagnosis at Time of Treatment
+AGE	Age in Years
+WEIGHT	Actual Weight (kg) Measured after Randomization
+LGLU	Serum Glucose at Baseline (mg/dl)
+OFIBRIN	Fibrinogen at Baseline (mg/dl)
+CTEDEMA	Edema on Baseline CT
+CTMASSEF	Mass Effect on Baseline CT
+RCENTCD	Center Of Randomization
+STRATUM	Study Randomization Stratum
+SYMP	Any Hemorrhage during Trial
+SYFATAL	Fatal Symptomatic Hemorrhage during Trial
+PART	Designation of Trial (Part I or II)
+BAR6M	Barthel Index at 6 Months (Intent to Treat Imputation)
+RANK6M	Modified Rankin Scale at 6 Months (Intent to Treat Imputation)
+GOS6M	Glasgow at 6 Months (Intent to Treat Imputation)
+BAR12M	Barthel Index at 12 Months (Intent to Treat Imputation)
+RANK12M	Modified Rankin Scale at 12 Months (Intent to Treat Imputation)
+GOS12M	Glasgow at 12 Months (Intent to Treat Imputation)
+ARANKIN	Rankin at 7-10 Days
+rank3m	Modified Rankin Scale at 90 Days (Intent to Treat Imputation)
+gos3m	Glasgow at 90 Days (Intent to Treat Imputation)
+BNINETY	Barthel Index at 90 Days (Intent to Treat Imputation)
+PRIMARY_	Primary Cause of Death
+SURDAYS	Days from randomization to death/censored
+DCENSOR	Indicates if Patient Died during Trial Follow-Up(Yes=dead)
+BATHER	History of Atherosclerosis at Baseline
+PSYS	Admission Systolic BP
+PDIA	Admission Diastolic BP
+DRINK	Drink Alcoholic Beverages at Baseline
+NIHSSB	NIH Stroke Scale at Baseline
+OSTRK	Patient Reported Prior Stroke or Old Stroke on Baseline CT
+CARDIAC	History of Other Cardiac Disease at Baseline
+CTFIND	Early Ischemic Stroke CT Findings(Edema or Mass Effect or Midline Shift or Intravascular Thrombus)on Baseline CT
+CTFIND2	Early Ischemic Stroke CT findings(Edema or Mass Effect or Midline Shift)on Baseline CT
+STARTMIN	Time from Stroke Onset to Treatment/Randomization (Minutes)
+ATEMP	Admission Temperature
+BPROB	Drinking Problem defined by Cage Questionnaire
+BCHOL	History of Hyperlipidemia at Baseline
+BHEP	History of Hepatic disease at Baseline
+BMAL	History of Malignancy at Baseline
+BHEMA	History of Hematological Disease at Baseline
+BPRIOR	Drink In Past 24 Hrs
+TDOSEDEL	Total Dose Delievered (mg) (based on estimated weight)
+HEPARIN	Heparin Use prior Baseline Stroke
+PPROS	Prosthetic Heart Disease at Admission
+PRECCB	Calcium Channel Blocker at Baseline
+PULSEBP	Baseline Pulse Pressure
+APULSEBP	Admission Pulse Pressure
+BMALCD	Type of cancer
+HEMINFAR	Hemorrhagic Infarctions during Trial
+INTRAMA	Intracerebral Hematomas during Trial
+TYPE1HEM	Hemorrhage (Symp. or Asymp.) during Trial
+HEMMINS	Time from Randomization to Hemrrohage(Minutes)
+FLIKE	Likeliest Clinical Classification of Ischemic Stroke Based on Post Treatment Data (could be influenced by treatment)
+OLDVOL	Old Lesion Volume at Baseline(missing set to zero if patient had baseline CT)
+INT3MLES	3 month Lesion Volume(Intent to Treat)
+HYPERSGN	Hyperdense Artery Sign on Baseline CT(reviewed with clinical information)
+LOSSGRWT	Loss of Gray-White Matter Distinction (GWMD) on Baseline CT(reviewed with clinical information)
+MCA33	Loss of GWMD over 33% of MCA on Baseline CT(reviewed with clinical information)
+HYPODENS	Presence of Hypodensity on Baseline CT(reviewed with clinical information)
+HYP33	Hypodensity over 33% of MCA on Baseline CT(reviewed with clinical information)
+CSFCOMP	Compression of CSF Space on Baseline CT(reviewed with clinical information)
+CSF33	Compression of CSF over 33% of MCA on Baseline CT(reviewed with clinical information)
+EARLYCTF	Early CT Findings(excluding hyperdense artery sign(also called intravascular thrombus))on Baseline CT(reviewed with clinical information)
+EARLY33	Early CT Findings over 33% of MCA on Baseline CT(reviewed with clinical information)
+ONSETCT	Time from stroke onset to CT scan at baseline (minutes)
+PHYGIVE	% of Correct Dose Administered (based on actual weight)
+CTMIDSHF	Midline Shift on Baseline CT
+CTHYPER	Hyperdense Ischemic Infarct on Baseline CT
+CTTHROM	Intravascular Thrombus on Baseline CT
+FINDINGS	Early CT Findings(Edema or Mass Effect or Midline Shift or Hyperdense Ischemic Infarct or Intravascular Thrombus)
+ABNORMAL	Abnormal Baseline CT(Variable FINDINGS is Yes or Old Lesion at Baseline)
+OVOLINT	Old Lesion Volume at Baseline with Missing Set to Zero
+HDCHG	The Place to Which Patient was Discharged after Initial Hospitalization
+los	Length of Hospital Stay from Admission to Discharge (Days)
+PPULSE	Admission Pulse Rate
+CTEMP	Baseline Temperature
+LWBC	WBC at Baseline (/mm3)
+LHCT	HCT at Baseline (%)
+LNA	Serum Na at Baseline (mEq/L)
+LK	Serum K at Baseline (mEq/L)
+LBUN	Serum BUN at Baseline (mg/dL)
+LCR	Serum Creatinine at Baseline (mg/L)
+LTBIL	Total Bilirubin at Baseline (mg/L)
+NEWSTRK	New Ischemic Stroke (Reviewed at Coordinating Center)
+ttrtnewstrk	Time from Treatment/Randomization to New Ischemic Stroke (Days)
+ECT	Indicates if Baseline CT was of Sufficient Quality to Be Reviewed(Yes=reviewed)
+tonsetadmission	Time from Stroke Onset to Admission(Seconds)
+tadmissiontrt	Time from Admission to Treatment/Randomization(Seconds)
+sconscio_base	Level of Consciousness at baseline
+slocqu_base	LOC Questions at baseline
+sloccom_base	LOC Commands at baseline
+sgaze_base	Best Gaze at baseline
+svisual_base	Visual at baseline
+spalsy_base	Facial Palsy at baseline
+smotorla_base	Motor Left Arm at baseline
+smotorra_base	Motor Right Arm at baseline
+smotorll_base	Motor Left Leg at baseline
+smotorrl_base	Motor Right Leg at baseline
+sataxia_base	ATAXIA score at baseline
+ssensory_base	Sensory at baseline
+slang_base	Best Language at baseline
+sdysar_base	Dysarthria at baseline
+sextin_base	Extinction And Inattention at baseline
+sconscio_hr2	Level of Consciousness at 2 hours post treatment(missing imputed)
+slocqu_hr2	LOC Questions at 2 hours post treatment(missing imputed)
+sloccom_hr2	LOC Commands at 2 hours post treatment(missing imputed)
+sgaze_hr2	Best Gaze at 2 hours post treatment(missing imputed)
+svisual_hr2	Visual at 2 hours post treatment(missing imputed)
+spalsy_hr2	Facial Palsy at 2 hours post treatment(missing imputed)
+smotorla_hr2	Motor Left Arm at 2 hours post treatment(missing imputed)
+smotorra_hr2	Motor Right Arm at 2 hours post treatment(missing imputed)
+smotorll_hr2	Motor Left Leg at 2 hours post treatment(missing imputed)
+smotorrl_hr2	Motor Right Leg at 2 hours post treatment(missing imputed)
+sataxia_hr2	ATAXIA score at 2 hours post treatment(missing imputed)
+ssensory_hr2	Sensory at 2 hours post treatment(missing imputed)
+slang_hr2	Best Language at 2 hours post treatment(missing imputed)
+sdysar_hr2	Dysarthria at 2 hours post treatment(missing imputed)
+sextin_hr2	Extinction And Inattention at 2 hours post treatment(missing imputed)
+sconscio_hr24	Level of Consciousness at 24 hours post stroke onset(missing imputed)
+slocqu_hr24	LOC Questions at 24 hours post stroke onset(missing imputed)
+sloccom_hr24	LOC Commands at 24 hours post stroke onset(missing imputed)
+sgaze_hr24	Best Gaze at 24 hours post stroke onset(missing imputed)
+svisual_hr24	Visual at 24 hours post stroke onset(missing imputed)
+spalsy_hr24	Facial Palsy at 24 hours post stroke onset(missing imputed)
+smotorla_hr24	Motor Left Arm at 24 hours post stroke onset(missing imputed)
+smotorra_hr24	Motor Right Arm at 24 hours post stroke onset(missing imputed)
+smotorll_hr24	Motor Left Leg at 24 hours post stroke onset(missing imputed)
+smotorrl_hr24	Motor Right Leg at 24 hours post stroke onset(missing imputed)
+sataxia_hr24	ATAXIA score at 24 hours post stroke onset(missing imputed)
+ssensory_hr24	Sensory at 24 hours post stroke onset(missing imputed)
+slang_hr24	Best Language at 24 hours post stroke onset(missing imputed)
+sdysar_hr24	Dysarthria at 24 hours post stroke onset(missing imputed)
+sextin_hr24	Extinction And Inattention at 24 hours post stroke onset(missing imputed)
+sconscio_day710	Level of Consciousness at 7-10 days post stroke onset(missing imputed)
+slocqu_day710	LOC Questions at 7-10 days post stroke onset(missing imputed)
+sloccom_day710	LOC Commands at 7-10 days post stroke onset(missing imputed)
+sgaze_day710	Best Gaze at 7-10 days post stroke onset(missing imputed)
+svisual_day710	Visual at 7-10 days post stroke onset(missing imputed)
+spalsy_day710	Facial Palsy at 7-10 days post stroke onset(missing imputed)
+smotorla_day710	Motor Left Arm at 7-10 days post stroke onset(missing imputed)
+smotorra_day710	Motor Right Arm at 7-10 days post stroke onset(missing imputed)
+smotorll_day710	Motor Left Leg at 7-10 days post stroke onset(missing imputed)
+smotorrl_day710	Motor Right Leg at 7-10 days post stroke onset(missing imputed)
+sataxia_day710	ATAXIA score at 7-10 days post stroke onset(missing imputed)
+ssensory_day710	Sensory at 7-10 days post stroke onset(missing imputed)
+slang_day710	Best Language at 7-10 days post stroke onset(missing imputed)
+sdysar_day710	Dysarthria at 7-10 days post stroke onset(missing imputed)
+sextin_day710	Extinction And Inattention at 7-10 days post stroke onset(missing imputed)
+sconscio_m3	Level of Consciousness at 3 months post stroke onset(missing imputed)
+slocqu_m3	LOC Questions at 3 months post stroke onset(missing imputed)
+sloccom_m3	LOC Commands at 3 months post stroke onset(missing imputed)
+sgaze_m3	Best Gaze at 3 months post stroke onset(missing imputed)
+svisual_m3	Visual at 3 months post stroke onset(missing imputed)
+spalsy_m3	Facial Palsy at 3 months post stroke onset(missing imputed)
+smotorla_m3	Motor Left Arm at 3 months post stroke onset(missing imputed)
+smotorra_m3	Motor Right Arm at 3 months post stroke onset(missing imputed)
+smotorll_m3	Motor Left Leg at 3 months post stroke onset(missing imputed)
+smotorrl_m3	Motor Right Leg at 3 months post stroke onset(missing imputed)
+sataxia_m3	ATAXIA score at 3 months post stroke onset(missing imputed)
+ssensory_m3	Sensory at 3 months post stroke onset(missing imputed)
+slang_m3	Best Language at 3 months post stroke onset(missing imputed)
+sdysar_m3	Dysarthria at 3 months post stroke onset(missing imputed)
+sextin_m3	Extinction And Inattention at 3 months post stroke onset(missing imputed)
+HOUR2	NIH Stroke Scale at 2 Hours (missing = Alive w/o data)
+HOUR24	NIH Stroke Scale at 24 Hours (missing = Alive w/o data)
+SEVENTEN	NIH Stroke Scale at 7-10 Days (missing = Alive w/o data)
+NINETY	NIH Stroke Scale at 90 Days (Intent to Treat Imputation)
+nihhr2_raw	NIH Stroke Scale at 2 hours post treatment(missing = Death or Alive w/o data)
+nihhr24_raw	NIH Stroke Scale at 24 hours post stroke onset(missing = Death or Alive w/o data)
+nihday710_raw	NIH Stroke Scale at 7-10 days post stroke onset(missing = Death or Alive w/o data)
+nihm3_raw	NIH Stroke Scale at 3 months post stroke onset(missing = Death or Alive w/o data)
+hr2_imputed	=1 if one or more of NIH Stroke Scale individual items at 2 hours post treatment are imputed
+hr24_imputed	=1 if one or more of NIH Stroke Scale individual items at 24 hours post stroke onset are imputed
+day710_imputed	=1 if one or more of NIH Stroke Scale individual items at 7-10 days post stroke onset are imputed
+m3_imputed	=1 if one or more of NIH Stroke Scale individual items at 3 months post stroke onset are imputed
+nihhr2	NIH Stroke Scale at 2 hours post treatment(missing imputed)
+nihhr24	NIH Stroke Scale at 24 hours post stroke onset(missing imputed)
+nihday710	NIH Stroke Scale at 7-10 days post stroke onset(missing imputed)
+nihm3	NIH Stroke Scale at 3 months post stroke onset(missing imputed)
+BSEVEN	Barthel Index at 7-10 Days (Intent to Treat Imputation)
+NIHGRP	NIH Stroke Scale at Baseline(8 groups)
+NIHGRP20	NIH Stroke Scale at Baseline(5 groups)
+PHAND	Handedness
+TLOC	Location Hemisphere
+IMP3MLES	3m lesion volume imputed
+IMP7DLES	7-10 days lesion volume imputed
+IMP24LES	24 hours lesion volume imputed
+H36CENS	=1 if symptomatic/asymptomatic hemorrhage occurred within 36 hours from initiation of treatment
+SY36CENS	=1 if symptomatic hemorrhage occurred within 36 hours from initiation of treatment
+D24HRS	Died 24 hrs post stroke onset
+D2HRS	Died 2 hrs post stroke onset
+D7DS	Died 7 days post treatment onset
+D90DS	Died 90 days post treatment onset
+BASELINE	NIH S.S at Baseline
+post36	Antihypertensive treatment (Post-randomization)
+preagtrt	Antihypertensive treatment (Pre-randomization)
+event	Post Antihypertensive treatment Required based on data (Postrandomization hypertension)
+lwcrt	Post randomization Diastolic blood pressure >=90
+bpdrop	MBP drops 20 pts
+bpdif	The largest Drop of mean blood pressure in 24 hrs
+bpdif1	The largest Drop of mean blood pressure from baseline
+bpdifcon	The largest Concsecutive mean blood pressure drop in first 8 hrs
+maxmbp	The maximum mean blood pressure in 24 hrs
+aht	Antihypertensive medication given before/after Randomization
+admbp	Admission Sys. BP>185 or Dia. BP>110 (Prerandomization hypertension)
+admdia	Admission diastolic blood pressure >= 90 mmHg
+dia	Pre or post randomization Diastolic blood pressure >=90
+hnt	Hypertension before/after randomization
+DELTA24	NIH Stroe Scale difference (baseline - 24 hours)
+BETTER24	Scale change at 24 hours
+NIH1	NIH Stroke Scale <=1 at 3 90 days (Intent to Treat Imputation)
+B95	Barthel Index >=95 at 90 Days (Intent to Treat Imputation)
+RANKIN1	Modified Rankin Scale=(0,1) at 90 Days (Intent to Treat Imputation)
+GOS1	Glasgow =1 at 90 Days (Intent to Treat Imputation)
+INT7DLES	7-10 day Lesion Volume(Intent to Treat)
+INT24LES	24 hours Lesion Volume (int. to treat)
+LESVOL	Baseline CT Lesion Volume
+EDEMA24	Edema on 24 hour CT
+MASSEF24	Mass Effect on 24 hour CT
+MIDSHF24	Midline Shift on 24 hour CT
+HYPER24	Hyperdense Ischemic Infarct on 24 hour CT
+THROM24	Intravascular Thrombus on 24 hour CT
+LES24	24 hours CT lesion volume (raw)
+LES710	7-10 days CT lesion volume (raw)
+LES3M	3 month CT lesion volume (raw)
+DFI	All DFI
+DFICAU	Cause of DFI
+HRDFI	Time from Treatment/Randomization to DFI (Hours)
+DFIREOCC	DFI (Reocclusion)
+DFIOTHER	DFI (otherwise)
+DFI24	DFI within 24 hrs
+REOCC24	DFI (Reocclusion) in 24 hrs
+OTHER24	DFI (otherwise) in 24 hrs
+DET24	Deterioration at 24 hrs
+DET710	Deterioration at 7-10d
+OFDP	FDP, mcg/ml
+DELTA90	NIH Stroe Scale difference (baseline - 90 days)
+HEMINT	Intetvals of Time from Randomization to Hemrrohage(Hours)
+asymp36	=1 if asymptomatic hemorrhage occurred within 36 hours from initiation of treatment
+minor_a	NIHSS Item <2, LOC=0
+minor_b	Presumed Small
+minor_c	No LOC, Visual, Aphasia, Hemianopia, Neglect
+minor_d	SS<=9 and No LOC/Visual/Aphasia/Hemianopia/Neglect
+minor_e	SS<=9 only
+AFEED	Barthel Index - Feeding (7-10 days post stroke onset)
+AMOVING	Barthel Index - Moving (7-10 days post stroke onset)
+ATOILET	Barthel Index - Personal Toilet (7-10 days post stroke onset)
+AONOFF	Barthel Index - On Off Toilet (7-10 days post stroke onset)
+ABATH	Barthel Index - Bathing (7-10 days post stroke onset)
+AWALK	Barthel Index - Walking (7-10 days post stroke onset)
+AWHEEL	Barthel Index - Wheelchair (7-10 days post stroke onset)
+ASTAIRS	Barthel Index - Stairs (7-10 days post stroke onset)
+ADRESS	Barthel Index - Dressing (7-10 days post stroke onset)
+ABOWELS	Barthel Index - Bowels (7-10 days post stroke onset)
+ABLAD	Barthel Index - Bladder (7-10 days post stroke onset)
+XFEED	Barthel Index - Feeding (3 months post stroke onset)
+XMOVING	Barthel Index - Moving (3 months post stroke onset)
+XTOILET	Barthel Index - Personal Toilet (3 months post stroke onset)
+XONOFF	Barthel Index - On Off Toilet (3 months post stroke onset)
+XBATH	Barthel Index - Bathing (3 months post stroke onset)
+XWALK	Barthel Index - Walking (3 months post stroke onset)
+XWHEEL	Barthel Index - Wheelchair (3 months post stroke onset)
+XSTAIRS	Barthel Index - Stairs (3 months post stroke onset)
+XDRESS	Barthel Index - Dressing (3 months post stroke onset)
+XBOWEL	Barthel Index - Bowels (3 months post stroke onset)
+XBLADDER	Barthel Index - Bladder (3 months post stroke onset)
+YFEED	Barthel Index - Feeding (6 months post stroke onset)
+YMOVING	Barthel Index - Moving (6 months post stroke onset)
+YTOILET	Barthel Index - Personal Toilet (6 months post stroke onset)
+YONOFF	Barthel Index - On Off Toilet (6 months post stroke onset)
+YBATH	Barthel Index - Bathing (6 months post stroke onset)
+YWALK	Barthel Index - Walking (6 months post stroke onset)
+YWHEEL	Barthel Index - Wheelchair (6 months post stroke onset)
+YSTAIRS	Barthel Index - Stairs (6 months post stroke onset)
+YDRESS	Barthel Index - Dressing (6 months post stroke onset)
+YBOWEL	Barthel Index - Bowels (6 months post stroke onset)
+YBLADDER	Barthel Index - Bladder (6 months post stroke onset)
+zfeed	Barthel Index - Feeding (12 months post stroke onset)
+zMOVING	Barthel Index - Moving (12 months post stroke onset)
+zTOILET	Barthel Index - Personal Toilet (12 months post stroke onset)
+zONOFF	Barthel Index - On Off Toilet (12 months post stroke onset)
+zBATH	Barthel Index - Bathing (12 months post stroke onset)
+zWALK	Barthel Index - Walking (12 months post stroke onset)
+zWHEEL	Barthel Index - Wheelchair (12 months post stroke onset)
+zSTAIRS	Barthel Index - Stairs (12 months post stroke onset)
+zDRESS	Barthel Index - Dressing (12 months post stroke onset)
+zBOWEL	Barthel Index - Bowels (12 months post stroke onset)
+zBLADDER	Barthel Index - Bladder (12 months post stroke onset)
+abarthel	Barthel Index score(7-10 days post stroke onset)
+xbarthel	Barthel Index at 3 months (raw)
+ybarthel	Barthel Index at 6 months (raw)
+zbarthel	Barthel Index at 12 months (raw)
+AMBP	Admission Mean Arterial Blood Pressure = (Admission Systolic BP + 2*Admission Diastolic BP)/3
+XRANKIN	Modified Rankin Scale at 90 Days (raw)
+XGOS	Glasgow at 90 Days (raw)
+YRANKIN	Modified Rankin Scale at 6 Months (raw)
+YGOS	Glasgow at 6 Months (raw)
+zrankin	Modified Rankin Scale at 12 Months (raw)
+zgos	Glasgow at 12 Months (raw)

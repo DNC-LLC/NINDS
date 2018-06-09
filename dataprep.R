@@ -8,7 +8,7 @@ ninds$record <- NULL
 library(rms)
 
 # Read SAS data labels extracted by Stat/Transfer VAR command
-labs <- read.delim("NINDSCCTR/tclemons/tPA/nindsvars.dat", header=FALSE, stringsAsFactors=FALSE)
+labs <- read.delim("nindsvars.dat", header=FALSE, stringsAsFactors=FALSE)
 ninds <- upData(ninds,
                 bdiab = bdiab==100,
                 bhyper = bhyper==100,
