@@ -1,0 +1,81 @@
+---
+title: "NINDS outcomes"
+author: "David C. Norris"
+date: "6/7/2018"
+output: pdf_document
+header-includes:
+- \usepackage{setspace}
+- \usepackage{relsize}
+- \usepackage{multirow}
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(rms)
+library(latticeExtra)
+load("ninds.Rdata")
+```
+
+# NINDS Outcomes Visualization
+
+Initially, I must gain visual insight into the longitudinal, multivariate outcomes
+measured in NINDS, including infarct volumes and the multiple clinical assessments.
+Of particular interest will be the *concordance* of objective and clinical measures.
+I'll aim to explore this concordance with well-designed data graphics.
+
+Let me begin with serialized measures of NIHSS (nihssb, hour2, hour24, seventen, ninety)
+and CT lesion sizes (lesvol, les24, les710, les3m). To 'stratify' cases by *severity*,
+let me exclude cases of hemorrhage and sort by the **3-month** lesion volume on CT.
+
+```{r longitudinal, fig.height=6.5}
+id <- rownames(ninds)
+long <- with(ninds,
+             rbind(data.frame(id=id, t=0, vol=lesvol, nihss=nihssb)
+                  ,data.frame(id=id, t=0.083, vol=NA, nihss=hour2)
+                  ,data.frame(id=id, t=1, vol=les24, nihss=hour24)
+                  ,data.frame(id=id, t=7, vol=les710, nihss=seventen)
+                  ,data.frame(id=id, t=90, vol=les3m, nihss=ninety)
+                  )
+)
+long <- long[order(long$id),]
+rownames(long) <- NULL
+
+# Restrict to cases with all 4 CTs
+got4 <- with(long, aggregate(!is.na(vol) ~ id, FUN=sum))
+names(got4)[2] <- 'count_CTs'
+got4 <- subset(got4, count_CTs==4)$id
+long4CTs <- subset(long, id %in% got4)
+
+# Further restrict to cases WITHOUT ICH
+no_ich <- rownames(subset(ninds, !is.na(h36cens) & !h36cens))
+long4CTs <- subset(long4CTs, id %in% no_ich)
+
+# Order cases by decreasing severity (in terms of final lesion volume)
+vol3m <- subset(long4CTs, t==90)
+vol3m_decr <- vol3m[order(vol3m$vol, decreasing=TRUE),]
+long4CTs$id <- ordered(long4CTs$id, levels=vol3m_decr$id)
+long4CTs <- long4CTs[order(long4CTs$id),]
+
+# Make 2 plot for overlay
+left <- xYplot(vol ~ t^0.25 | id, data=subset(long4CTs[1:500,], !is.na(vol)), type='l'
+               , xlab=expression(t^(1/4))
+               , par.strip.text=list(cex=0.7)
+               , layout=c(10,NA)
+               , as.table=TRUE
+               )
+right <- xYplot(nihss ~ t^0.25 | id, data=long4CTs[1:500,], type='l')
+
+# Overlay
+doubleYScale(left, right)
+```
+
+```{r stratify}
+```
+
+# Appendix
+
+```{r summary, results='asis'}
+latex(describe(ninds[, -which(names(ninds) %in% c('bmalcd'))]), file='')
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
