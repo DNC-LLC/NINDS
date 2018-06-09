@@ -94,6 +94,20 @@ doubleYScale(left_ce, right_ce, add.ylab2=TRUE)
 
 Well, look at that! Upon eyeballing this array, I gain the distinct impression of 'less surprising' clinical and imaging courses. The CT lesion volumes exhibit more convexity and asymptote-like behavior.
 
+# Correlation of lesion volume with NIHSS
+
+```{r vol_v_outcome3m, fig.height=6.5}
+xYplot(ninety ~ (les3m)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'))
+```
+
+```{r vol_v_outcome710, fig.height=6.5}
+xYplot(seventen ~ (les710)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'))
+```
+
+```{r vol_v_outcome24, fig.height=6.5}
+xYplot(hour24 ~ (les24)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'))
+```
+
 # Appendix
 
 ```{r summary, results='asis'}
