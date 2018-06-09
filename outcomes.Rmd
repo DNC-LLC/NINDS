@@ -37,6 +37,9 @@ long <- with(ninds,
                   ,data.frame(id=id, t=90, vol=les3m, nihss=ninety)
                   )
 )
+label(long$vol) <- "CT lesion volume"
+label(long$nihss) <- "NIH Stroke Scale"
+#units(long$vol) <- '???'
 long <- long[order(long$id),]
 rownames(long) <- NULL
 
@@ -66,7 +69,7 @@ left <- xYplot(vol ~ t^0.25 | id, data=subset(long4CTs[1:500,], !is.na(vol)), ty
 right <- xYplot(nihss ~ t^0.25 | id, data=long4CTs[1:500,], type='l')
 
 # Overlay
-doubleYScale(left, right)
+doubleYScale(left, right, add.ylab2=TRUE)
 ```
 
 ```{r stratify}
