@@ -6,3 +6,6 @@
 *.Rdata
 *.tex
 *.pdf
+*.zip
+NINDSCCTR/
+*.xlsx
