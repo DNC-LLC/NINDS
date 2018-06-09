@@ -30,11 +30,11 @@ let me exclude cases of hemorrhage and sort by the **3-month** lesion volume on 
 ```{r longitudinal, fig.height=6.5}
 id <- rownames(ninds)
 long <- with(ninds,
-             rbind(data.frame(id=id, t=0, vol=lesvol, nihss=nihssb)
-                  ,data.frame(id=id, t=0.083, vol=NA, nihss=hour2)
-                  ,data.frame(id=id, t=1, vol=les24, nihss=hour24)
-                  ,data.frame(id=id, t=7, vol=les710, nihss=seventen)
-                  ,data.frame(id=id, t=90, vol=les3m, nihss=ninety)
+             rbind(data.frame(id=id, t=0, vol=lesvol, nihss=nihssb, flike=flike)
+                  ,data.frame(id=id, t=0.083, vol=NA, nihss=hour2, flike=flike)
+                  ,data.frame(id=id, t=1, vol=les24, nihss=hour24, flike=flike)
+                  ,data.frame(id=id, t=7, vol=les710, nihss=seventen, flike=flike)
+                  ,data.frame(id=id, t=90, vol=les3m, nihss=ninety, flike=flike)
                   )
 )
 label(long$vol) <- "CT lesion volume"
@@ -72,8 +72,27 @@ right <- xYplot(nihss ~ t^0.25 | id, data=long4CTs[1:500,], type='l')
 doubleYScale(left, right, add.ylab2=TRUE)
 ```
 
-```{r stratify}
+From the above, I gather that many of these cases do not tell the simple story I would have expected: that the first day (or week) after the stroke, the damage consolidates. Some cases (e.g., 497938, 5958911 and 4406493) seem to show a 2nd stroke occurring during the first 90 days. So apparently I must read up on the details of stroke imaging!
+
+Pending this, however, let my try restricting to cases of cardioembolic stroke, in the hope that some of the worst effects here come from 'large vessel occlusions'.
+
+```{r stratify, fig.height=6.5}
+#densityplot(~ les3m | flike, data=ninds)
+long4CTs_cardio <- subset(long4CTs, flike=='Cardioembolic Stroke')
+left_ce <- xYplot(vol ~ t^0.25 | id, data=subset(long4CTs_cardio[1:500,], !is.na(vol)), type='l'
+               , xlab=expression(t^(1/4))
+               , par.strip.text=list(cex=0.7)
+               , layout=c(10,NA)
+               , as.table=TRUE
+               )
+right_ce <- xYplot(nihss ~ t^0.25 | id, data=long4CTs_cardio[1:500,], type='l')
+
+# Overlay
+doubleYScale(left_ce, right_ce, add.ylab2=TRUE)
+
 ```
+
+Well, look at that! Upon eyeballing this array, I gain the distinct impression of 'less surprising' clinical and imaging courses. The CT lesion volumes exhibit more convexity and asymptote-like behavior.
 
 # Appendix
 
