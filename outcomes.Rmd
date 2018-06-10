@@ -113,7 +113,7 @@ xYplot(hour24 ~ (les24)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'))
 Next, I want to compare the distribution of lesion volumes between treated and untreated.
 
 ```{r compare_vol3m}
-compareVols <- function(les, excludeICH=FALSE, ...){
+compareVols <- function(les, plot=TRUE, excludeICH=FALSE, ...){
   ninds_ce <- eval(substitute(subset(ninds, flike=='Cardioembolic Stroke' & !is.na(les))))
   ninds_ce <- eval(substitute(ninds_ce[order(ninds_ce$les),]))
   if(excludeICH)
@@ -127,6 +127,9 @@ compareVols <- function(les, excludeICH=FALSE, ...){
   treated$F <- treated$F / max(treated$F)
   placebo$F <- placebo$F / max(placebo$F)
   both <- rbind(treated, placebo)
+  both$lesion_volume <- eval(substitute(both$les))
+  if(!plot)
+    return(both)
   xYplot(substitute(F ~ les), group=treatcd, data=both, type='l'
          , auto.key=list(columns=2, points=FALSE, lines=TRUE), ...)
 }
@@ -149,6 +152,46 @@ noICH24
 
 ```{r overlay_ICH}
 noICH24 + maybeICH24
+```
+
+## Assemble a concise picture across all 4 imaging times
+
+```{r unified_comparison, fig.height=6.5}
+cbl <- compareVols(lesvol, plot=FALSE)
+cblnoICH <- compareVols(lesvol, plot=FALSE, excludeICH=TRUE)
+c24 <- compareVols(les24, plot=FALSE)
+c24noICH <- compareVols(les24, plot=FALSE, excludeICH=TRUE)
+c710 <- compareVols(les710, plot=FALSE)
+c710noICH <- compareVols(les710, plot=FALSE, excludeICH=TRUE)
+c3m <- compareVols(les3m, plot=FALSE)
+c3mnoICH <- compareVols(les3m, plot=FALSE, excludeICH=TRUE)
+cbl$ct_time <- cblnoICH$ct_time <- "Baseline"
+c24$ct_time <- c24noICH$ct_time <- "24 hours"
+c710$ct_time <- c710noICH$ct_time <- "7-10 days"
+c3m$ct_time <- c3mnoICH$ct_time <- "3 month"
+cbl$includesICH <- c24$includesICH <- c710$includesICH <- c3m$includesICH <- TRUE
+cblnoICH$includesICH <- c24noICH$includesICH <- c710noICH$includesICH <- c3mnoICH$includesICH <- FALSE
+unified <- rbind(cbl, cblnoICH, c24, c24noICH, c710, c710noICH, c3m, c3mnoICH)
+unified <- upData(unified
+                  , ct_time = ordered(ct_time, levels=c('Baseline',
+                                                        '24 hours',
+                                                        '7-10 days',
+                                                        '3 month'))
+                  , print = FALSE
+)
+p1 <- xYplot(F ~ lesion_volume^(1/3) | ct_time, groups=treatcd
+             , data=subset(unified, includesICH), type='l'
+             , layout=c(1,4), as.table=TRUE
+             , xlab=expression(sqrt(`CT lesion volume`,3))
+             , ylab="Cumulative Distribution"
+             )
+p2 <- xYplot(F ~ lesion_volume^(1/3) | ct_time, groups=treatcd
+             , data=subset(unified, !includesICH), type='l'
+             , layout=c(1,4), as.table=TRUE
+             , lty=3, label.curves=FALSE
+             )
+# Combine the plots:
+p1 + p2
 ```
 
 # Appendix
