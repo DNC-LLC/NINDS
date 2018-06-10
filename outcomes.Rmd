@@ -114,7 +114,10 @@ Next, I want to compare the distribution of lesion volumes between treated and u
 
 ```{r compare_vol3m}
 compareVols <- function(les, plot=TRUE, excludeICH=FALSE, ...){
-  ninds_ce <- eval(substitute(subset(ninds, flike=='Cardioembolic Stroke' & !is.na(les))))
+  #ninds_ce <- eval(substitute(subset(ninds, flike=='Cardioembolic Stroke' & !is.na(les))))
+  # Ensure that compareVols always works with the same denominator
+  ninds_ce <- subset(ninds, flike=='Cardioembolic Stroke'
+                     & !is.na(lesvol) & !is.na(les24) & !is.na(les710) & !is.na(les3m))
   ninds_ce <- eval(substitute(ninds_ce[order(ninds_ce$les),]))
   if(excludeICH)
     ninds_ce <- subset(ninds_ce, !is.na(h36cens) & !h36cens)
