@@ -113,64 +113,37 @@ xYplot(hour24 ~ (les24)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'))
 Next, I want to compare the distribution of lesion volumes between treated and untreated.
 
 ```{r compare_vol3m}
-ninds_ce <- subset(ninds, flike=='Cardioembolic Stroke' & !is.na(les3m))
-ninds_ce <- ninds_ce[order(ninds_ce$les3m),]
-treated <- subset(ninds_ce, treated)
-placebo <- subset(ninds_ce, !treated)
-treated$F <- 1
-placebo$F <- 1
-treated$F <- cumsum(treated$F)
-placebo$F <- cumsum(placebo$F)
-treated$F <- treated$F / max(treated$F)
-placebo$F <- placebo$F / max(placebo$F)
-both <- rbind(treated, placebo)
-xYplot(F ~ les3m, group=treatcd, data=both, type='l', auto.key=list(columns=2))
+compareVols <- function(les, excludeICH=FALSE, ...){
+  ninds_ce <- eval(substitute(subset(ninds, flike=='Cardioembolic Stroke' & !is.na(les))))
+  ninds_ce <- eval(substitute(ninds_ce[order(ninds_ce$les),]))
+  if(excludeICH)
+    ninds_ce <- subset(ninds_ce, !is.na(h36cens) & !h36cens)
+  treated <- subset(ninds_ce, treated)
+  placebo <- subset(ninds_ce, !treated)
+  treated$F <- 1
+  placebo$F <- 1
+  treated$F <- cumsum(treated$F)
+  placebo$F <- cumsum(placebo$F)
+  treated$F <- treated$F / max(treated$F)
+  placebo$F <- placebo$F / max(placebo$F)
+  both <- rbind(treated, placebo)
+  xYplot(substitute(F ~ les), group=treatcd, data=both, type='l'
+         , auto.key=list(columns=2, points=FALSE, lines=TRUE), ...)
+}
+compareVols(les3m)
 ```
 
 ```{r compare_vol710}
-ninds_ce <- subset(ninds, flike=='Cardioembolic Stroke' & !is.na(les710))
-ninds_ce <- ninds_ce[order(ninds_ce$les710),]
-treated <- subset(ninds_ce, treated)
-placebo <- subset(ninds_ce, !treated)
-treated$F <- 1
-placebo$F <- 1
-treated$F <- cumsum(treated$F)
-placebo$F <- cumsum(placebo$F)
-treated$F <- treated$F / max(treated$F)
-placebo$F <- placebo$F / max(placebo$F)
-both <- rbind(treated, placebo)
-xYplot(F ~ les710, group=treatcd, data=both, type='l', auto.key=list(columns=2))
+compareVols(les710)
 ```
 
 ```{r compare_vol24}
-ninds_ce <- subset(ninds, flike=='Cardioembolic Stroke' & !is.na(les24))
-ninds_ce <- ninds_ce[order(ninds_ce$les24),]
-treated <- subset(ninds_ce, treated)
-placebo <- subset(ninds_ce, !treated)
-treated$F <- 1
-placebo$F <- 1
-treated$F <- cumsum(treated$F)
-placebo$F <- cumsum(placebo$F)
-treated$F <- treated$F / max(treated$F)
-placebo$F <- placebo$F / max(placebo$F)
-both <- rbind(treated, placebo)
-maybeICH24 <- xYplot(F ~ les24, group=treatcd, data=both, type='l', auto.key=list(columns=2))
+maybeICH24 <- compareVols(les24)
 maybeICH24
 ```
 
 ```{r compare_vol24noICH}
-ninds_ce <- subset(ninds, flike=='Cardioembolic Stroke' & !is.na(les24) & !is.na(h36cens) & !h36cens)
-ninds_ce <- ninds_ce[order(ninds_ce$les24),]
-treated <- subset(ninds_ce, treated)
-placebo <- subset(ninds_ce, !treated)
-treated$F <- 1
-placebo$F <- 1
-treated$F <- cumsum(treated$F)
-placebo$F <- cumsum(placebo$F)
-treated$F <- treated$F / max(treated$F)
-placebo$F <- placebo$F / max(placebo$F)
-both <- rbind(treated, placebo)
-noICH24 <- xYplot(F ~ les24, group=treatcd, data=both, type='l', lty=2,  auto.key=list(columns=2), label.curves=FALSE)
+noICH24 <- compareVols(les24, excludeICH=TRUE, lty=3, label.curves=FALSE)
 noICH24
 ```
 
