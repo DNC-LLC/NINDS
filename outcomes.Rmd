@@ -1,21 +1,28 @@
 ---
 title: "NINDS outcomes"
 author: "David C. Norris"
-date: "6/7/2018"
+date: "6/10/2018 (minor rev. 7/29/2018)"
 output:
   pdf_document:
+    fig_caption: true
     keep_tex: true
 header-includes:
 - \usepackage{setspace}
 - \usepackage{relsize}
 - \usepackage{multirow}
+- \usepackage{float}
+- \makeatletter\renewcommand*{\fps@figure}{H}\makeatother
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(rms)
 library(latticeExtra)
+library(gridExtra)
+library(RColorBrewer)
 load("ninds.Rdata")
+# Set colorblind-friendly lattice superpose colors:
+trellis.par.set(list(superpose.line=list(col=brewer.pal(3,'Dark2')[-1])))
 ```
 
 # NINDS Outcomes Visualization
@@ -98,21 +105,18 @@ Well, look at that! Upon eyeballing this array, I gain the distinct impression o
 
 # Correlation of lesion volume with NIHSS
 
-```{r vol_v_outcome3m, fig.height=6.5}
-xYplot(ninety ~ (les3m)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'))
-```
-
-```{r vol_v_outcome710, fig.height=6.5}
-xYplot(seventen ~ (les710)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'))
-```
-
-```{r vol_v_outcome24, fig.height=6.5}
-xYplot(hour24 ~ (les24)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'))
+```{r volNIHSScorr, fig.height=8.5}
+smaller.ylab <- list(par.ylab.text=list(cex=0.8))
+p1 <- xYplot(ninety ~ (les3m)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'),
+             par.settings=smaller.ylab)
+p2 <- xYplot(seventen ~ (les710)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'),
+             par.settings=smaller.ylab)
+p3 <- xYplot(hour24 ~ (les24)^(1), data=subset(ninds, flike=='Cardioembolic Stroke'),
+             par.settings=smaller.ylab)
+grid.arrange(p1, p2, p3, ncol=2)
 ```
 
 # Cumulative distribution comparison for lesion volumes
-
-Next, I want to compare the distribution of lesion volumes between treated and untreated.
 
 ```{r compare_vol3m}
 compareVols <- function(les, plot=TRUE, excludeICH=FALSE, drop_ids=NULL, ...){
@@ -139,30 +143,9 @@ compareVols <- function(les, plot=TRUE, excludeICH=FALSE, drop_ids=NULL, ...){
   xYplot(substitute(F ~ les), group=treatcd, data=both, type='l'
          , auto.key=list(columns=2, points=FALSE, lines=TRUE), ...)
 }
-compareVols(les3m)
 ```
 
-```{r compare_vol710}
-compareVols(les710)
-```
-
-```{r compare_vol24}
-maybeICH24 <- compareVols(les24)
-maybeICH24
-```
-
-```{r compare_vol24noICH}
-noICH24 <- compareVols(les24, excludeICH=TRUE, lty=3, label.curves=FALSE)
-noICH24
-```
-
-```{r overlay_ICH}
-noICH24 + maybeICH24
-```
-
-## Assemble a concise picture across all 4 imaging times
-
-```{r unified_comparison, fig.height=6.5}
+```{r unified_comparison, fig.height=8, fig.cap="Cumulative distributions of CT lesion volumes, at baseline, 24 hours, 7-10 days, and 3 months. Dotted curves exclude cases with ICH."}
 cbl <- compareVols(lesvol, plot=FALSE)
 cblnoICH <- compareVols(lesvol, plot=FALSE, excludeICH=TRUE)
 c24 <- compareVols(les24, plot=FALSE)
@@ -201,7 +184,8 @@ p1 + p2
 ```
 
 ## Restrict the above to lesionless baseline CT
-```{r lesionless, fig.height=6.5}
+
+```{r lesionless, fig.height=8.5, fig.cap="Cumulative distributions of CT lesion volumes, at 24 hours, 7-10 days, and 3 months, for subjects with no lesion on the baseline CT. Dotted curves exclude cases with ICH."}
 baseles <- cbl$id[cbl$lesvol>0]
 c24 <- compareVols(les24, plot=FALSE, drop_ids=baseles)
 c24noICH <- compareVols(les24, plot=FALSE, excludeICH=TRUE, drop_ids=baseles)
@@ -237,10 +221,11 @@ p2 <- xYplot(F ~ lesion_volume^(1/3) | ct_time, groups=treatcd
 p1 + p2
 ```
 
+\newpage
 # Appendix
 
 ```{r summary, results='asis'}
 latex(describe(ninds[, -which(names(ninds) %in% c('bmalcd'))]), file='')
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
