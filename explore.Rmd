@@ -118,7 +118,7 @@ grid.arrange(p1, p2, p3, ncol=2)
 
 # Cumulative distribution comparison for lesion volumes
 
-```{r compare_vol3m}
+```{r compare_vols}
 compareVols <- function(les, plot=TRUE, excludeICH=FALSE, drop_ids=NULL, ...){
   #ninds_ce <- eval(substitute(subset(ninds, flike=='Cardioembolic Stroke' & !is.na(les))))
   # Ensure that compareVols always works with the same denominator
@@ -145,7 +145,7 @@ compareVols <- function(les, plot=TRUE, excludeICH=FALSE, drop_ids=NULL, ...){
 }
 ```
 
-```{r unified_comparison, fig.height=8, fig.cap="Cumulative distributions of CT lesion volumes, at baseline, 24 hours, 7-10 days, and 3 months. Dotted curves exclude cases with ICH."}
+```{r unified_comparison, fig.height=8, fig.cap=paste("Cumulative distributions of CT lesion volumes at baseline, 24 hours, 7-10 days, and 3 months, for N=", nrow(cbl), "cardioembolic stroke subjects. Dotted curves exclude", nrow(cbl) - nrow(cblnoICH), "cases with ICH occurring within 36 hours of initiation of treatment.")}
 cbl <- compareVols(lesvol, plot=FALSE)
 cblnoICH <- compareVols(lesvol, plot=FALSE, excludeICH=TRUE)
 c24 <- compareVols(les24, plot=FALSE)
@@ -185,7 +185,7 @@ p1 + p2
 
 ## Restrict the above to lesionless baseline CT
 
-```{r lesionless, fig.height=8.5, fig.cap="Cumulative distributions of CT lesion volumes, at 24 hours, 7-10 days, and 3 months, for subjects with no lesion on the baseline CT. Dotted curves exclude cases with ICH."}
+```{r lesionless, fig.height=8, fig.cap=paste("Cumulative distributions of CT lesion volumes at 24 hours, 7-10 days, and 3 months, for N=", nrow(c24), "cardioembolic stroke subjects with no lesion on the baseline CT. Dotted curves exclude", nrow(c24) - nrow(c24noICH), "cases with ICH.")}
 baseles <- cbl$id[cbl$lesvol>0]
 c24 <- compareVols(les24, plot=FALSE, drop_ids=baseles)
 c24noICH <- compareVols(les24, plot=FALSE, excludeICH=TRUE, drop_ids=baseles)
