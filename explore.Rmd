@@ -221,6 +221,20 @@ p2 <- xYplot(F ~ lesion_volume^(1/3) | ct_time, groups=treatcd
 p1 + p2
 ```
 
+# What lesion volume changes would the K-S test detect?
+
+```{r KS-test, echo=TRUE, results='markup'}
+comp <- compareVols(les3m, plot=FALSE) #, excludeICH=TRUE)
+set.seed(2018) # Reproducibly jitter lesion volumes, averting 'ties' offensive to KS test:
+lesion_vols <- with(comp, jitter(lesion_volume, amount=0.001*mean(lesion_volume)))
+tPA_vols <- lesion_vols[comp$treatcd=='t-PA']
+placebo_vols <- lesion_vols[comp$treatcd=='Placebo']
+# NB: In ks.test, the alternative 'greater' refers to the *cumulative* distribution,
+#     and so corresponds to the suspicion that tPA volumes are shifted to the left
+#     (i.e., are generally *lower*) relative to the placebo volumes.
+ks.test(0.65*tPA_vols, placebo_vols, alternative=c('greater','two.sided')[1])
+```
+
 \newpage
 # Appendix
 
