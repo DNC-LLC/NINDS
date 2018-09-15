@@ -83,7 +83,7 @@ doubleYScale(left, right, add.ylab2=TRUE)
 
 From the above, I gather that many of these cases do not tell the simple story I would have expected: that the first day (or week) after the stroke, the damage consolidates. Some cases (e.g., 497938, 5958911 and 4406493) seem to show a 2nd stroke occurring during the first 90 days. So apparently I must read up on the details of stroke imaging!
 
-Pending this, however, let my try restricting to cases of cardioembolic stroke, in the hope that some of the worst effects here come from 'large vessel occlusions'.
+Pending this, however, let me try restricting to cases of cardioembolic stroke, in the hope that some of the worst effects here come from 'large vessel occlusions'.
 
 ```{r stratify, fig.height=6.5}
 #densityplot(~ les3m | flike, data=ninds)
